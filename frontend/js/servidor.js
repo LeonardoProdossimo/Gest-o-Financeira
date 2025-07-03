@@ -1,7 +1,7 @@
 function getTransacoes(filtro) {
     abrirLoading()
 
-    fetch('http://127.0.0.1:3333/financeiro/financeiro'
+    fetch(getApiUrl(API_CONFIG.endpoints.financeiro)
         + '?descricao=' + document.querySelector("#inputdescricaofiltro").value
         + '&datainicio=' + document.querySelector("#inputdatainiciofiltro").value
         + '&datafinal=' + document.querySelector("#inputdatafinalfiltro").value
@@ -30,7 +30,7 @@ function getTransacoes(filtro) {
 
 function getTransacao(id) {
     abrirLoading()
-    fetch("http://127.0.0.1:3333/financeiro/financeiroeditar?idfinanceiro=" + id,
+    fetch(getApiUrl(API_CONFIG.endpoints.financeiroEditar) + "?idfinanceiro=" + id,
         {
             method: "GET",
             headers: { 'Content-Type': 'application/json' },
@@ -52,7 +52,7 @@ function getTransacao(id) {
 function postTransacao(obj) {
     abrirLoading()
     let body = JSON.stringify(obj);
-    let endereco = "http://127.0.0.1:3333/financeiro/financeiro";
+    let endereco = getApiUrl(API_CONFIG.endpoints.financeiro);
     let metodo = "POST";
 
     fetch(endereco,
@@ -80,7 +80,7 @@ function putTransacao(obj, id) {
     obj.idfinanceiro = id;
     abrirLoading()
     let body = JSON.stringify(obj);
-    let endereco = "http://127.0.0.1:3333/financeiro/financeiro";
+    let endereco = getApiUrl(API_CONFIG.endpoints.financeiro);
     let metodo = "PUT";
 
     fetch(endereco,
@@ -108,7 +108,7 @@ function putTransacao(obj, id) {
 function deleteTransacao(id) {
     abrirLoading()
     var body = JSON.stringify({ "idfinanceiro": id });
-    fetch("http://127.0.0.1:3333/financeiro/financeiro",
+    fetch(getApiUrl(API_CONFIG.endpoints.financeiro),
         {
             method: "DELETE",
             headers: { 'Content-Type': 'application/json' },
@@ -129,7 +129,7 @@ function deleteTransacao(id) {
 function getCategorias(filtro) {
     abrirLoading()
 
-    fetch('http://127.0.0.1:3333/categorias/categoria'
+    fetch(getApiUrl(API_CONFIG.endpoints.categorias)
         + '?descricao=' + document.getElementById("inputdescricaofiltro").value
         + '&ativo=' + document.getElementById("inputsituacaofiltro").value,
         {
@@ -155,7 +155,7 @@ function getCategorias(filtro) {
 
 function getCategoria(id) {
     abrirLoading()
-    fetch("http://127.0.0.1:3333/categorias/categoria?idcategoria=" + id,
+    fetch(getApiUrl(API_CONFIG.endpoints.categorias) + "?idcategoria=" + id,
         {
             method: "GET",
             headers: { 'Content-Type': 'application/json' },
@@ -178,7 +178,7 @@ function getCategoria(id) {
 function postCategoria(obj) {
     abrirLoading()
     let body = JSON.stringify(obj);
-    let endereco = "http://127.0.0.1:3333/categorias/categoria";
+    let endereco = getApiUrl(API_CONFIG.endpoints.categorias);
     let metodo = "POST";
 
     fetch(endereco,
@@ -206,7 +206,7 @@ function putCategoria(obj, id) {
     obj.idcategoria = id;
     abrirLoading()
     let body = JSON.stringify(obj);
-    let endereco = "http://127.0.0.1:3333/categorias/categoria";
+    let endereco = getApiUrl(API_CONFIG.endpoints.categorias);
     let metodo = "PUT";
 
     fetch(endereco,

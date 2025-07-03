@@ -1,7 +1,7 @@
 function getListaCategorias() {
     abrirLoading()
 
-    fetch('http://127.0.0.1:3333/componente/categoria?ativo=true',
+    fetch(getApiUrl(API_CONFIG.endpoints.componentes.categoria) + '?ativo=true',
         {
             method: "GET",
             headers: { 'Content-Type': 'application/json' },
@@ -16,7 +16,7 @@ function getListaCategorias() {
 
 function getListaTipos() {
 
-    fetch('http://127.0.0.1:3333/componente/tipo',
+    fetch(getApiUrl(API_CONFIG.endpoints.componentes.tipo),
         {
             method: "GET",
             headers: { 'Content-Type': 'application/json' },
