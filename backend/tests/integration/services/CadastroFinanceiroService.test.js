@@ -8,7 +8,7 @@ jest.mock('../../../conexao/Conexao', () => ({
 }));
 
 // Mock do logger
-jest.mock('../../../logger/logger', () => ({
+jest.mock('../../../logger/Logger', () => ({
     info: jest.fn(),
     error: jest.fn(),
     warning: jest.fn()
